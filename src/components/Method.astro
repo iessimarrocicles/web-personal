@@ -1,0 +1,162 @@
+---
+import { method } from '../data/content';
+---
+
+<section class="method section--ink" id="metodo" data-method>
+  <div class="method__pin">
+    <div class="container method__intro">
+      <span class="eyebrow">Metodología</span>
+      <h2 class="h-lg" data-split>Un proceso en <em class="italic gold-text">cuatro</em> pasos</h2>
+      <div class="method__progress" aria-hidden="true"><span data-method-progress></span></div>
+    </div>
+
+    <div class="method__track" data-method-track>
+      {
+        method.map((m) => (
+          <article class="step">
+            <span class="step__n">{m.n}</span>
+            <div class="step__icon" aria-hidden="true">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5" />
+                <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="50" cy="50" r="6" fill="currentColor" />
+              </svg>
+            </div>
+            <h3 class="step__title">{m.title}</h3>
+            <p class="step__text">{m.text}</p>
+          </article>
+        ))
+      }
+      <div class="step step--end">
+        <p class="h-md">¿Empezamos <em class="italic gold-text">juntos</em>?</p>
+        <a href="#contacto" class="btn btn--gold" data-magnetic>Hablemos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .method {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .method__pin {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(40px, 6vh, 72px);
+    padding-block: clamp(88px, 10vw, 140px);
+  }
+
+  .method__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .method__progress {
+    height: 1px;
+    background: var(--grey-dark);
+    max-width: 420px;
+    margin-top: 12px;
+  }
+
+  .method__progress span {
+    display: block;
+    height: 100%;
+    background: var(--gold);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  .method__track {
+    display: flex;
+    gap: clamp(20px, 2.4vw, 32px);
+    padding-inline: var(--gutter);
+    width: max-content;
+  }
+
+  .step {
+    position: relative;
+    flex: 0 0 clamp(300px, 30vw, 440px);
+    min-height: clamp(360px, 46vh, 460px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: clamp(28px, 3vw, 44px);
+    border: 1px solid rgba(201, 162, 74, 0.18);
+    border-radius: calc(var(--radius) + 6px);
+    background: radial-gradient(circle at 100% 0%, rgba(201, 162, 74, 0.12), transparent 50%), var(--black);
+  }
+
+  .step__n {
+    font-family: var(--font-serif);
+    font-size: clamp(80px, 9vw, 140px);
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gold);
+  }
+
+  .step__icon {
+    position: absolute;
+    top: clamp(28px, 3vw, 44px);
+    right: clamp(28px, 3vw, 44px);
+    width: 64px;
+    color: var(--gold);
+  }
+
+  .step__title {
+    margin-top: auto;
+    font-size: clamp(30px, 3vw, 44px);
+  }
+
+  .step__text {
+    color: var(--grey);
+  }
+
+  .step--end {
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px;
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .step--end .gold-text {
+    background: none;
+    color: var(--black);
+    animation: none;
+  }
+
+  .step--end .btn--gold {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .step--end .btn--gold::after {
+    background: var(--white);
+  }
+
+  .step--end .btn--gold:hover {
+    color: var(--black);
+  }
+
+  @media (max-width: 899px) {
+    .method__track {
+      flex-direction: column;
+      width: auto;
+    }
+
+    .step {
+      flex-basis: auto;
+      min-height: 300px;
+    }
+
+    .method__progress {
+      display: none;
+    }
+  }
+</style>

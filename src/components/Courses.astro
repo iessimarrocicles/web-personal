@@ -1,0 +1,174 @@
+---
+import { Image } from 'astro:assets';
+import { courses } from '../data/content';
+---
+
+<section class="section courses" id="cursos">
+  <div class="container">
+    <header class="courses__head">
+      <div>
+        <span class="eyebrow" data-reveal="up">Formación</span>
+        <h2 class="h-lg" data-split>Cursos que se <em class="italic gold-text">aplican</em> el lunes</h2>
+      </div>
+      <p class="lead" data-reveal="up">
+        Programas prácticos, certificables y diseñados desde la experiencia de aula. En línea, presenciales o a medida
+        para tu centro.
+      </p>
+    </header>
+
+    <div class="courses__grid">
+      {
+        courses.map((c, i) => (
+          <article class="card" data-reveal="up" data-tilt data-cursor="Ver">
+            <div class="card__media media">
+              <Image src={c.img} alt="" widths={[480, 800]} sizes="(max-width: 700px) 100vw, 50vw" />
+              <span class="card__num">0{i + 1}</span>
+            </div>
+            <div class="card__body">
+              <ul class="card__tags">
+                {c.tags.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+              <h3 class="card__title">{c.title}</h3>
+              <p class="card__desc">{c.desc}</p>
+              <a href="#contacto" class="card__link">
+                Más información
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .courses__head {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: clamp(48px, 7vw, 100px);
+  }
+
+  .courses__head > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .courses__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 3vw, 40px);
+  }
+
+  .card:nth-child(even) {
+    margin-top: clamp(0px, 8vw, 120px);
+  }
+
+  .card {
+    position: relative;
+    border: 1px solid rgba(201, 162, 74, 0.16);
+    border-radius: calc(var(--radius) + 6px);
+    padding: 10px;
+    background: linear-gradient(160deg, #161513, #0d0d0c);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: border-color 0.4s;
+  }
+
+  .card:hover {
+    border-color: rgba(201, 162, 74, 0.5);
+  }
+
+  .card__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .card__media :global(img) {
+    transition: transform 1.2s var(--ease);
+  }
+
+  .card:hover .card__media :global(img) {
+    transform: scale(1.08);
+  }
+
+  .card__num {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 18px 18px;
+  }
+
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card__tags li {
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--gold-light);
+  }
+
+  .card__title {
+    font-size: clamp(28px, 2.6vw, 40px);
+  }
+
+  .card__desc {
+    color: var(--grey);
+  }
+
+  .card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--gold);
+  }
+
+  .card__link svg {
+    width: 16px;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .card:hover .card__link svg {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 800px) {
+    .courses__head,
+    .courses__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card:nth-child(even) {
+      margin-top: 0;
+    }
+  }
+</style>

@@ -1,0 +1,170 @@
+---
+import { testimonials } from '../data/content';
+---
+
+<section class="section section--light testimonials" aria-labelledby="testi-title" data-slider>
+  <div class="container testimonials__inner">
+    <div class="testimonials__head">
+      <span class="eyebrow" data-reveal="up">Testimonios</span>
+      <h2 class="sr-only" id="testi-title">Lo que dicen los docentes</h2>
+      <svg class="testimonials__quote" viewBox="0 0 64 48" aria-hidden="true" data-reveal="fade">
+        <path d="M0 48V28C0 12 8 2 26 0l2 6C18 9 14 15 14 22h12v26H0Zm36 0V28C36 12 44 2 62 0l2 6c-10 3-14 9-14 16h12v26H36Z" fill="currentColor"></path>
+      </svg>
+    </div>
+
+    <div class="testimonials__slides" aria-live="polite">
+      {
+        testimonials.map((t, i) => (
+          <figure class:list={['slide', { 'is-active': i === 0 }]} data-slide aria-hidden={i === 0 ? 'false' : 'true'}>
+            <blockquote class="slide__quote">{t.quote}</blockquote>
+            <figcaption class="slide__author">
+              <span class="slide__avatar" aria-hidden="true">{t.name.charAt(0)}</span>
+              <span>
+                <strong>{t.name}</strong>
+                <small>{t.role}</small>
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="testimonials__controls">
+      <span class="testimonials__count"><span data-slide-current>01</span> / 0{testimonials.length}</span>
+      <div class="testimonials__btns">
+        <button class="arrow" data-prev aria-label="Testimonio anterior" data-magnetic>
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 8H2M7 3 2 8l5 5" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+        <button class="arrow" data-next aria-label="Siguiente testimonio" data-magnetic>
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials__inner {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px clamp(32px, 6vw, 100px);
+  }
+
+  .testimonials__head {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .testimonials__quote {
+    width: 72px;
+    color: var(--gold);
+  }
+
+  .testimonials__slides {
+    display: grid;
+  }
+
+  .slide {
+    grid-area: 1 / 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    visibility: hidden;
+  }
+
+  .slide.is-active {
+    visibility: visible;
+  }
+
+  .slide__quote {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3.6vw, 56px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .slide__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .slide__author span:last-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide__author small {
+    color: #5b574f;
+    font-size: 14px;
+  }
+
+  .slide__avatar {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 22px;
+  }
+
+  .testimonials__controls {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid rgba(10, 10, 10, 0.12);
+  }
+
+  .testimonials__count {
+    font-variant-numeric: tabular-nums;
+    color: #5b574f;
+  }
+
+  .testimonials__btns {
+    display: flex;
+    gap: 12px;
+  }
+
+  .arrow {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(10, 10, 10, 0.2);
+    color: var(--black);
+    transition:
+      background-color 0.4s,
+      color 0.4s,
+      border-color 0.4s;
+  }
+
+  .arrow:hover {
+    background: var(--black);
+    color: var(--gold);
+    border-color: var(--black);
+  }
+
+  .arrow svg {
+    width: 18px;
+  }
+
+  @media (max-width: 800px) {
+    .testimonials__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials__controls {
+      grid-column: 1;
+    }
+  }
+</style>

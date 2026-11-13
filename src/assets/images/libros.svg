@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <defs>
+    <radialGradient id="lamp" cx="78%" cy="18%" r="75%">
+      <stop offset="0" stop-color="#f3dfa2" stop-opacity=".6"/><stop offset=".4" stop-color="#c9a24a" stop-opacity=".15"/><stop offset="1" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3dfa2"/><stop offset="1" stop-color="#8a6d2b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="#0a0a0a"/>
+  <rect width="1200" height="1200" fill="url(#lamp)"/>
+  <rect y="900" width="1200" height="300" fill="#1c1b19"/>
+  <!-- lámpara -->
+  <path d="M1000 900 V420 L880 300" stroke="url(#brass)" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M760 250 L960 250 L920 360 L800 360Z" fill="url(#brass)" transform="rotate(-30 860 300)"/>
+  <ellipse cx="1000" cy="905" rx="110" ry="18" fill="#8a6d2b"/>
+  <!-- pila de libros -->
+  <g stroke="#0a0a0a" stroke-width="3">
+    <rect x="150" y="820" width="560" height="80" rx="6" fill="#ece6d8"/>
+    <rect x="190" y="740" width="500" height="80" rx="6" fill="#c9a24a"/>
+    <rect x="130" y="660" width="540" height="80" rx="6" fill="#141414" stroke="#8a6d2b"/>
+    <rect x="210" y="590" width="440" height="70" rx="6" fill="#e6c97a"/>
+    <rect x="170" y="520" width="500" height="70" rx="6" fill="#3a3833"/>
+  </g>
+  <g stroke="#0a0a0a" stroke-width="4" opacity=".55">
+    <path d="M220 860 H640 M260 780 H620 M280 625 H580"/>
+  </g>
+  <path d="M200 700 H600" stroke="#c9a24a" stroke-width="4"/>
+  <path d="M220 555 H620" stroke="#c9a24a" stroke-width="4"/>
+  <!-- cuaderno abierto -->
+  <path d="M270 520 C350 470 430 470 470 500 C510 470 590 470 670 520 L670 520 L470 540Z" fill="#f5f2ea"/>
+  <!-- polvo -->
+  <g fill="#f3dfa2">
+    <circle cx="820" cy="480" r="3" opacity=".8"/><circle cx="760" cy="560" r="2" opacity=".6"/><circle cx="880" cy="620" r="2.5" opacity=".7"/>
+    <circle cx="700" cy="420" r="2" opacity=".5"/><circle cx="900" cy="520" r="1.6" opacity=".6"/><circle cx="790" cy="680" r="2" opacity=".5"/>
+  </g>
+</svg>

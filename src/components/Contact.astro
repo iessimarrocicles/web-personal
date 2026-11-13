@@ -1,0 +1,185 @@
+---
+import { site } from '../data/content';
+---
+
+<section class="section section--light contact" id="contacto">
+  <div class="container contact__grid">
+    <div class="contact__info">
+      <span class="eyebrow" data-reveal="up">Contacto</span>
+      <h2 class="h-lg" data-split>Hablemos de tu <em class="italic">proyecto</em></h2>
+      <p class="lead" data-reveal="up">
+        Cuéntame qué necesita tu centro o tu equipo y te enviaré una propuesta personalizada en menos de 48 horas.
+      </p>
+      <dl class="contact__data" data-reveal="up">
+        <div><dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+        <div><dt>Ubicación</dt><dd>{site.location} · Online en toda España</dd></div>
+      </dl>
+    </div>
+
+    <form class="form" data-form data-reveal="up" data-email={site.email}>
+      <label class="field">
+        <span>Nombre</span>
+        <input type="text" name="nombre" required autocomplete="name" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label class="field">
+        <span>Centro o entidad</span>
+        <input type="text" name="centro" autocomplete="organization" />
+      </label>
+      <fieldset class="field field--chips">
+        <legend>Me interesa</legend>
+        <div class="chips">
+          {
+            ['IA en el aula', 'Competencia digital', 'Metodologías activas', 'Evaluación', 'Charla / ponencia'].map((t) => (
+              <label class="chip">
+                <input type="checkbox" name="interes" value={t} />
+                <span>{t}</span>
+              </label>
+            ))
+          }
+        </div>
+      </fieldset>
+      <label class="field">
+        <span>Mensaje</span>
+        <textarea name="mensaje" rows="4"></textarea>
+      </label>
+      <button type="submit" class="btn btn--gold form__submit" data-magnetic>
+        Enviar mensaje
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"></path></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 8vw, 140px);
+  }
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .contact__data {
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact__data dt {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+  }
+
+  .contact__data dd {
+    margin: 4px 0 0;
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2vw, 28px);
+  }
+
+  .contact__data a {
+    background: linear-gradient(var(--gold), var(--gold)) left bottom / 0 1px no-repeat;
+    transition: background-size 0.5s var(--ease);
+  }
+
+  .contact__data a:hover {
+    background-size: 100% 1px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .field > span,
+  .field legend {
+    font-size: 13px;
+    color: #5b574f;
+    padding: 0;
+  }
+
+  .field input,
+  .field textarea {
+    font: inherit;
+    color: var(--black);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.25);
+    padding: 10px 0;
+    resize: vertical;
+    transition: border-color 0.3s;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--gold-dark);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .chip span {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(10, 10, 10, 0.2);
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+  }
+
+  .chip input:checked + span {
+    background: var(--black);
+    color: var(--gold);
+    border-color: var(--black);
+  }
+
+  .chip input:focus-visible + span {
+    outline: 2px solid var(--gold-dark);
+    outline-offset: 2px;
+  }
+
+  .form__submit {
+    align-self: flex-start;
+  }
+
+  @media (max-width: 860px) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+---
+import { nav, site } from '../data/content';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <p class="footer__claim">Educar es sembrar en <em class="italic gold-text">terreno fértil</em>.</p>
+      <nav class="footer__nav" aria-label="Pie de página">
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      </nav>
+      <div class="footer__social">
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer__big" aria-hidden="true" data-footer-big>
+      {
+        site.name.split('').map((ch) => <span>{ch === ' ' ? ' ' : ch}</span>)
+      }
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} {site.name}. Todos los derechos reservados.</span>
+      <a href="#top" class="footer__top-link">Volver arriba ↑</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--black);
+    padding-top: clamp(80px, 10vw, 140px);
+    padding-bottom: 32px;
+    overflow: hidden;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(201, 162, 74, 0.15);
+  }
+
+  .footer__claim {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.15;
+    max-width: 16ch;
+  }
+
+  .footer__nav,
+  .footer__social {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--grey);
+  }
+
+  .footer__nav a:hover,
+  .footer__social a:hover {
+    color: var(--gold);
+  }
+
+  .footer__big {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: clamp(64px, 17vw, 300px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    padding-block: clamp(32px, 4vw, 56px);
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gold);
+    white-space: nowrap;
+  }
+
+  .footer__big span {
+    display: inline-block;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  .footer__top-link:hover {
+    color: var(--gold);
+  }
+
+  @media (max-width: 760px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__claim {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

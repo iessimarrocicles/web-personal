@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250">
+  <defs>
+    <radialGradient id="spot" cx="50%" cy="10%" r="80%">
+      <stop offset="0" stop-color="#e6c97a" stop-opacity=".55"/><stop offset=".5" stop-color="#8a6d2b" stop-opacity=".12"/><stop offset="1" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3dfa2" stop-opacity=".35"/><stop offset="1" stop-color="#f3dfa2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1250" fill="#0a0a0a"/>
+  <rect width="1000" height="1250" fill="url(#spot)"/>
+  <path d="M440 0 L560 0 L820 900 L180 900Z" fill="url(#beam)"/>
+  <!-- pantalla -->
+  <rect x="220" y="160" width="560" height="330" rx="10" fill="#141414" stroke="#c9a24a" stroke-width="2"/>
+  <path d="M280 410 L380 330 L460 370 L560 260 L720 300" stroke="#e6c97a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <g fill="#e6c97a"><circle cx="380" cy="330" r="9"/><circle cx="460" cy="370" r="9"/><circle cx="560" cy="260" r="9"/></g>
+  <!-- ponente -->
+  <circle cx="500" cy="610" r="50" fill="#1c1b19" stroke="#c9a24a" stroke-width="3"/>
+  <path d="M400 860 C400 720 600 720 600 860Z" fill="#1c1b19" stroke="#c9a24a" stroke-width="3"/>
+  <!-- público -->
+  <g fill="#141414" stroke="#8a6d2b" stroke-width="2">
+    <circle cx="140" cy="1000" r="46"/><path d="M50 1250 C50 1080 230 1080 230 1250Z"/>
+    <circle cx="380" cy="1030" r="46"/><path d="M290 1250 C290 1110 470 1110 470 1250Z"/>
+    <circle cx="620" cy="1030" r="46"/><path d="M530 1250 C530 1110 710 1110 710 1250Z"/>
+    <circle cx="860" cy="1000" r="46"/><path d="M770 1250 C770 1080 950 1080 950 1250Z"/>
+  </g>
+  <g fill="#c9a24a" opacity=".8"><rect x="320" y="1140" width="120" height="70" rx="6"/><rect x="560" y="1140" width="120" height="70" rx="6"/></g>
+</svg>

@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import { images } from '../data/content';
+---
+
+<section class="cta" aria-labelledby="cta-title">
+  <div class="cta__bg" aria-hidden="true">
+    <Image src={images.oro} alt="" widths={[1600]} data-parallax="0.25" />
+  </div>
+  <div class="container cta__inner">
+    <span class="eyebrow" data-reveal="up">Formación a medida</span>
+    <h2 class="cta__title" id="cta-title" data-split>
+      Llevemos la innovación <em class="italic gold-text">a tu claustro</em>
+    </h2>
+    <div data-reveal="up">
+      <a href="#contacto" class="cta__circle" data-magnetic data-cursor="Ir">
+        <span>Solicita<br />propuesta</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    overflow: hidden;
+    min-height: 90svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-block: clamp(100px, 14vw, 200px);
+  }
+
+  .cta__bg {
+    position: absolute;
+    inset: -15% 0;
+  }
+
+  .cta__bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.85) 75%);
+  }
+
+  .cta__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .cta__title {
+    font-size: clamp(44px, 7.5vw, 128px);
+    max-width: 14ch;
+  }
+
+  .cta__circle {
+    display: grid;
+    place-items: center;
+    width: clamp(150px, 15vw, 200px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 500;
+    line-height: 1.3;
+    transition: background-color 0.4s;
+  }
+
+  .cta__circle:hover {
+    background: var(--white);
+  }
+</style>

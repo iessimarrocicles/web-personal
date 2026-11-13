@@ -1,0 +1,72 @@
+---
+import { stats } from '../data/content';
+---
+
+<section class="stats section--light" aria-label="Cifras">
+  <div class="container stats__grid">
+    {
+      stats.map((s) => (
+        <div class="stat" data-reveal="up">
+          <span class="stat__value">
+            <span data-counter={s.value} data-decimals={s.decimals}>
+              {s.value.toLocaleString('es-ES', { minimumFractionDigits: s.decimals, maximumFractionDigits: s.decimals })}
+            </span>
+            <span class="stat__suffix">{s.suffix}</span>
+          </span>
+          <span class="stat__label">{s.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding-bottom: clamp(88px, 10vw, 160px);
+  }
+
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(10, 10, 10, 0.15);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 40px 24px 0 0;
+  }
+
+  .stat + .stat {
+    padding-left: 24px;
+    border-left: 1px solid rgba(10, 10, 10, 0.12);
+  }
+
+  .stat__value {
+    font-family: var(--font-serif);
+    font-size: clamp(48px, 6vw, 96px);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__suffix {
+    color: var(--gold-dark);
+  }
+
+  .stat__label {
+    color: #5b574f;
+    font-size: 15px;
+  }
+
+  @media (max-width: 800px) {
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+</style>

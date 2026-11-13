@@ -1,0 +1,77 @@
+---
+import { site } from '../data/content';
+---
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <span class="preloader__name">{site.name}</span>
+    <span class="preloader__count"><span data-count>0</span>%</span>
+  </div>
+  <div class="preloader__bar"><span></span></div>
+  <div class="preloader__curtain"></div>
+</div>
+
+<style>
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  :global(html:not(.js)) .preloader {
+    display: none;
+  }
+
+  .preloader__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .preloader__name {
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  .preloader__count {
+    font-family: var(--font-serif);
+    font-size: clamp(72px, 16vw, 200px);
+    line-height: 1;
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .preloader__bar {
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: 48px;
+    height: 1px;
+    background: var(--grey-dark);
+  }
+
+  .preloader__bar span {
+    display: block;
+    height: 100%;
+    background: var(--gold);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  .preloader__curtain {
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(100%);
+  }
+</style>

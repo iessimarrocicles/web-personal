@@ -1,0 +1,75 @@
+---
+import { marquee } from '../data/content';
+const items = [...marquee, ...marquee];
+---
+
+<section class="marquee" aria-label="Áreas de trabajo">
+  <div class="marquee__row" data-marquee>
+    <div class="marquee__track">
+      {
+        items.map((item) => (
+          <span class="marquee__item">
+            {item}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5Z" fill="currentColor" /></svg>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  <div class="marquee__row marquee__row--reverse" data-marquee data-direction="-1">
+    <div class="marquee__track">
+      {
+        items.map((item) => (
+          <span class="marquee__item marquee__item--outline">
+            {item}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5Z" fill="currentColor" /></svg>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee {
+    padding-block: clamp(40px, 6vw, 72px);
+    border-block: 1px solid rgba(201, 162, 74, 0.15);
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .marquee__row {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .marquee__row--reverse {
+    margin-top: 8px;
+  }
+
+  .marquee__track {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    padding-right: clamp(20px, 3vw, 40px);
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 7vw, 110px);
+    line-height: 1.1;
+  }
+
+  .marquee__item svg {
+    width: clamp(20px, 2.4vw, 36px);
+    color: var(--gold);
+  }
+
+  .marquee__item--outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--gold);
+    font-style: italic;
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import { gallery } from '../data/content';
+
+const cols = [gallery.filter((_, i) => i % 3 === 0), gallery.filter((_, i) => i % 3 === 1), gallery.filter((_, i) => i % 3 === 2)];
+const speeds = [-8, 10, -14];
+---
+
+<section class="section gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <header class="gallery__head">
+      <span class="eyebrow" data-reveal="up">Momentos</span>
+      <h2 class="h-lg" id="gallery-title" data-split>Aulas, talleres y <em class="italic gold-text">escenarios</em></h2>
+    </header>
+
+    <div class="gallery__grid">
+      {
+        cols.map((col, ci) => (
+          <div class="gallery__col" data-speed={speeds[ci]}>
+            {col.map((g) => (
+              <figure class:list={['gallery__item media', { 'is-tall': g.tall }]} data-reveal="clip">
+                <Image src={g.img} alt={g.alt} widths={[400, 700, 1000]} sizes="(max-width: 700px) 50vw, 33vw" />
+              </figure>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    overflow: hidden;
+  }
+
+  .gallery__head {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: clamp(56px, 8vw, 120px);
+  }
+
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 2vw, 28px);
+    align-items: start;
+  }
+
+  .gallery__col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2vw, 28px);
+  }
+
+  .gallery__col:nth-child(2) {
+    margin-top: clamp(40px, 8vw, 140px);
+  }
+
+  .gallery__item {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery__item.is-tall {
+    aspect-ratio: 4 / 5;
+  }
+
+  .gallery__item :global(img) {
+    transition:
+      transform 1.2s var(--ease),
+      filter 0.8s;
+    filter: grayscale(0.35) contrast(1.05);
+  }
+
+  .gallery__item:hover :global(img) {
+    transform: scale(1.06);
+    filter: grayscale(0) contrast(1.05);
+  }
+
+  @media (max-width: 700px) {
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery__col:nth-child(3) {
+      display: none;
+    }
+  }
+</style>
